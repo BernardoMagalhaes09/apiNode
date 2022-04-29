@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "https://322d-177-12-41-202.ngrok.io",
+            "url": "http://54.196.147.210:3001",
             "description": "API de test"
         }
     ],
