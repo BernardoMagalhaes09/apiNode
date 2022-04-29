@@ -24,4 +24,4 @@ app.get('/', async (req, res) => {
 
 require('./controllers/pokeController')(app);
 
-app.listen(3000);
+app.listen(3001);
