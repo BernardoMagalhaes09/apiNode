@@ -1,1 +1,4 @@
 node_modules
+.env
+bmbs19950923.pem
+package-lock.json
