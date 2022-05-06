@@ -23,7 +23,6 @@ app.get('/', async (req, res) => {
 })
 
 require('./controllers/authController')(app)
-require('./controllers/pokeController')(app);
-require('./controllers/testController')(app)
+require('./controllers/pokeController')(app)
 
 app.listen(3000);

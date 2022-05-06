@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "http://54.196.147.210:3000",
+            "url": "54.196.147.210:3000",
             "description": "API de test"
         }
     ],
@@ -192,6 +192,12 @@
                         "name": "page",
                         "in": "query",
                         "description": "Qual pagina acessar, lembrando que são retornados 20 pokemons por página",
+                        "required": false
+                    },
+                    {
+                        "name": "take",
+                        "in": "query",
+                        "description": "Quantos pokemons deseja renderizar por pagina",
                         "required": false
                     }
                 ],
