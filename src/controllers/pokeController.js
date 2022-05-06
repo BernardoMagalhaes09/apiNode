@@ -13,7 +13,7 @@ router.use(authMiddleware)
 router.get('', async (req, res) => {
   const {take, page} = req.query
   var next_page = {}  
-  if(!page && !take){url_naxt_page = ''}
+  if(!page && !take){next_page.url_next_page = ''}
   if(!page && take){
     req.query.page = 1
     next_page.url_next_page = `${process.env.URL_PROD}pokemon?take=${req.query.take}&page=${parseInt(req.query.page) + 1}`
