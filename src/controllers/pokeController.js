@@ -18,7 +18,8 @@ router.get('', async (req, res) => {
     .skip((take * page) - take)
     .limit(take)
     .exec()
-    return res.status(200).json({data: pokemon, next_page: `${process.env.URL_PROD}pokemon?take=${take}&page=${parseInt(req.query.page) + 1}`})
+    if(!take){req.query.take = pokemon.lenght}
+    return res.status(200).json({data: pokemon, next_page: `${process.env.URL_PROD}pokemon?take=${req.query.take}&page=${parseInt(req.query.page) + 1}`})
   }catch(e){
     return res.status(400).json({error: e})
   }
