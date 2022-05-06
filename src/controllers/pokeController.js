@@ -12,14 +12,21 @@ router.use(authMiddleware)
 
 router.get('', async (req, res) => {
   const {take, page} = req.query
-  if(!page){req.query.page = 1}
+  var next_page = {}  
+  if(!page && !take){url_naxt_page = ''}
+  if(!page && take){
+    req.query.page = 1
+    next_page.url_next_page = `${process.env.URL_PROD}pokemon?take=${req.query.take}&page=${parseInt(req.query.page) + 1}`
+  }
+  if(page && take){
+    next_page.url_next_page = `${process.env.URL_PROD}pokemon?take=${req.query.take}&page=${parseInt(req.query.page) + 1}`
+  }
   try{
     const pokemon = await Pokemon.find(req.query)
     .skip((take * page) - take)
     .limit(take)
     .exec()
-    if(!take){req.query.take = pokemon.lenght}
-    return res.status(200).json({data: pokemon, next_page: `${process.env.URL_PROD}pokemon?take=${req.query.take}&page=${parseInt(req.query.page) + 1}`})
+    return res.status(200).json({data: pokemon, next_page: next_page.url_next_page})
   }catch(e){
     return res.status(400).json({error: e})
   }
